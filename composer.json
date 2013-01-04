@@ -1,0 +1,23 @@
+{
+    "name": "fuchcz/zprgen",
+    "description": "Generator our scout monthly magazine from bulletin board posts.",
+    "authors": [
+        {
+            "name": "Miroslav Pokorný",
+            "email": "fuch@fuch.cz"
+        }
+    ],
+    "version": "0.1.0-dev",
+    "autoload": {
+        "classmap": ["ZprGen/"]
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "git://github.com/fuchcz/leenter.git"
+        }
+    ],
+    "require": {
+        "fuchcz/leenter": "dev-master"
+    }
+}

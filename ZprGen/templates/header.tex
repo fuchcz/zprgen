@@ -1,0 +1,182 @@
+\documentclass[twoside]{article} % document class
+
+% declare page size, margins
+\usepackage[a5paper,margin=11mm,includehead,includefoot,footskip=6.5mm,headheight=0mm,headsep=0mm]{geometry}
+% czech babel
+\usepackage[czech]{babel}
+% input encoding
+\usepackage[utf8]{inputenc}
+% font encoding
+\usepackage[T1]{fontenc}
+% set font
+\usepackage[light]{ubuntu}
+
+% packages
+\usepackage{color}
+\usepackage{xcolor,colortbl}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+	\setlength{\columnseprule}{.4pt}
+	\setlength{\columnsep}{0.6cm}
+\usepackage{fancyhdr}
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyfoot{}
+	\fancyfoot[LO,RE]{\scriptsize Zpravodaj YMCA-SKAUTského střediska Břeclav}
+	\fancyfoot[LE,RO]{\scriptsize strana \thepage}
+	\renewcommand{\headrulewidth}{0pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+
+% set default lengths
+\unitlength=1mm
+\parindent=1.3em
+\parskip=0mm
+\setlength{\parskip}{0.5mm plus0.01mm minus0.01mm}
+
+% set cz quotes
+\newcommand\czuv[1]{\quotedblbase #1\textquotedblleft}
+
+% main header
+\def\zpravodaj#1#2#3#4#5{
+	\parindent=0mm
+	\linethickness{0mm}
+	\begin{picture}(0,0)
+		\linethickness{0mm}
+		\put(-0.65,-23.55){ % main rectangle background
+			\colorbox{black}{
+				\framebox(122.6,26){}
+			}
+		}
+		\put(8.0,-27.5){ % month
+			\makebox(122.6,14)[br]{
+				\fontsize{40}{50}\selectfont \fontUbuntuLight{\textcolor{white}{#2/#3}}
+			}
+		}
+		\put(-0.65,-9.6){ % rectangle to protect 'zpravodaj'
+			\colorbox{black}{
+				\framebox(122.6,10){}
+			}
+		}
+		\put(10.6,-12.5){ % 'zpravodaj'
+			\makebox(122.6,14)[br]{
+				\fontsize{65.6}{50}\selectfont \fontUbuntuLight{\textcolor{white}{ZPRAVODAJ}}
+			}
+		}
+		\put(3.4,-28){ % dates
+			\makebox(122.6,1)[rb]{
+					\scriptsize \hspace{0.1mm} ročník #4. \hspace{0.1mm} $\vert$ \hspace{0.1mm} číslo #5. \hspace{0.1mm} $\vert$ \hspace{0.1mm} vyšlo #1
+			}
+		}
+		\linethickness{0.4pt}
+		\put(-0.65,-28.5){ % line after dates
+			\line(1,0){126}
+		}
+	\end{picture}
+	\vspace*{26.5mm}
+	\parindent=1.3em
+	\footnotesize
+	\begin{multicols*}{2}
+}
+
+% 'stredisko' header
+\def\stredisko{
+	\parindent=0mm
+	\par\addvspace{\baselineskip}
+	\par{
+		\colorbox{black}{
+			\framebox(56.5,7){}
+		}
+		\put(-53,-1.2){
+			\fontsize{30}{30}\selectfont \fontUbuntuLight{\textcolor{white}{STŘEDISKO}}
+		}
+	}
+	\par{\addvspace{0.8\baselineskip}}
+	\parindent=1.5em
+}
+
+% 'poutnici' header
+\def\poutnici{
+	\parindent=0mm
+	\par\addvspace{\baselineskip}
+	\par{
+		\colorbox{black}{
+			\framebox(56.5,6){}
+		}
+		\put(-42.5,-1.2){
+			\fontsize{27}{30}\selectfont \fontUbuntuLight{\textcolor{white}{POUTNÍCI}}
+		}
+	}
+	\par{\addvspace{0.8\baselineskip}}
+	\parindent=1.5em
+}
+
+% 'lesni skritci' header
+\def\lesniskritci{
+	\parindent=0mm
+	\par\addvspace{\baselineskip}
+	\par{
+		\colorbox{black}{
+			\framebox(56.5,6){}
+		}
+		\put(-58.7,-1.2){
+			\fontsize{27}{30}\selectfont \fontUbuntuLight{\textcolor{white}{LESNÍ SKŘÍTCI}}
+		}
+	}
+	\par{\addvspace{0.8\baselineskip}}
+	\parindent=1.5em
+}
+
+% items
+\newenvironment{odrazky}{
+	\vspace{-0.5\baselineskip}
+	\par\addvspace{0.8\baselineskip}
+	\begin{itemize}[leftmargin=1.7em]
+	\itemsep0em
+}{
+	\end{itemize}
+}
+
+% header
+\def\nadpis#1{
+	\parindent=0mm
+	\par\addvspace{\baselineskip}
+	\makebox(60,2)[c]{\fontsize{10.5}{13}\selectfont \fontUbuntuLight{\bf #1}}
+	\par{\addvspace{\baselineskip}}
+	\parindent=1.5em
+}
+
+% event header
+\def\akce#1{
+	\parindent=0mm
+    \par\addvspace{0.38cm}
+	{\fontsize{10}{12}\selectfont \fontUbuntuLight{#1}}
+	\parindent=1.5em
+	\par\nopagebreak\vspace{0.29cm}
+}
+
+% image
+\def\image#1#2{
+	\parindent=0pt
+	\def\arraystretch{1.4}
+	\par{\addvspace{0.6\baselineskip}}
+	\makebox[\linewidth][c]{\includegraphics[width=#2\linewidth]{#1}}
+	\par{\addvspace{0.6\baselineskip}}
+	\def\arraystretch{1}\parindent=1.5em
+}
+
+% table
+\def\table#1#2{
+	\parindent=0pt
+	\def\arraystretch{1.4}
+	\par{\addvspace{0.6\baselineskip}}
+	\begin{tabularx}{\linewidth}{#1}\hline
+	#2
+	\end{tabularx}
+	\par{\addvspace{0.6\baselineskip}}
+	\def\arraystretch{1}
+	\parindent=1.5em
+}
+
+\begin{document} % document begin
