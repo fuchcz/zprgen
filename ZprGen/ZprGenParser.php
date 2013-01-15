@@ -85,7 +85,7 @@ class ZprGenParser extends Leenter\Parser
         if ($iId != '[X]' && $iId != '[S]' && $iId != '[7]' && $iId != '[8]') return false;
         $parsedString = $this->parser->parse($string);
         if ($this->data['type'] != Item::GENERAL) {
-            if (strpos('[b]konec:[/b]', $string) === FALSE) { $this->data['finishType'] = 'konec'; } else { $this->data['finishType'] = 'návrat'; }
+            if (strpos('[b]konec:[/b]', $string) === FALSE) { $this->data['endingType'] = 'konec'; } else { $this->data['endingType'] = 'návrat'; }
             return new EventItem($parsedString, $this->data);
         } else {
             return new GeneralItem($parsedString, $this->data);
@@ -187,7 +187,7 @@ class ZprGenParser extends Leenter\Parser
 
     public function processT_EPLACE($string)
     {
-        $this->data['endPlace'] = $string;
+        $this->data['endingPlace'] = $string;
 
         return $string;
     }

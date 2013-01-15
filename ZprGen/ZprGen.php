@@ -97,7 +97,7 @@ class ZprGen
         if (!empty($general) || !empty($events)) {
             $return .= "\n\\" . $title . "\n" . $general;
             if (!empty($events)) {
-                $return .= "\n\\nadpis{CO NÁS ČEKÁ V " . $this->getLocativeMonth($month) . "?}\n" . $events;
+                $return .= "\n\\nadpis{CO NÁS ČEKÁ V " . $this->getLocativeMonth((int)$month) . "?}\n" . $events;
             }
         }
 
